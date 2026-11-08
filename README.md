@@ -1,13 +1,12 @@
 # Who Stopped Answering?
 
-Between Pew's 2009 and 2014 surveys of Pakistan, the share viewing the Taliban unfavorably fell from 70% to 59% while the favorable share stayed near one in ten. Pew described extremist groups as "seen negatively, but less so in recent years," and press coverage read the third of respondents without an answer as reluctance to talk about the Taliban.
+Pew's annual surveys of Pakistan are the standard source on how Pakistanis view the Taliban, al Qaeda, and the United States, and their year-to-year changes are reported as shifts in opinion: "Pakistani Public Opinion Ever More Critical of U.S." (2012), "U.S. Ratings Somewhat Less Negative" and "Extremists Seen Negatively, but Less So in Recent Years" (2014). Respondent-level data from the six surveys between 2009 and 2014 show that these shifts mostly track how many women answered.
 
-The respondent-level data show a change in who answered:
-
-- **Women stopped answering, about everything foreign.** Women's no-answer share rose from 25% to 53% on the Taliban and from 26% to 48% on the United States. Men's stayed at 15% and 14% on the Taliban and 7% and 8% on the United States. Women still rated Nawaz Sharif (5% and 7% without an answer).
-- **Men's views of the Taliban did not change** (74% and 75% unfavorable). Men's views of al Qaeda did soften (8% to 15% favorable).
-- **Not education.** More 2014 women had no schooling, but the rise occurs within both schooling groups.
-- **Specific to Pakistan.** Among 23 countries Pew surveyed in both years, Pakistan is the only one where the rise is confined to women.
+- **Women's non-response swings; men's does not.** Women giving no answer about the United States: 26, 26, 21, 12, 27, 48% across 2009 to 2014. Men: 6 to 8% every year. The Taliban, al Qaeda, China, and Iran move with it. Almost every woman rates Nawaz Sharif.
+- **The same women.** In 2014, 28% of women answered none of five questions (Taliban, al Qaeda, United States, China, Iran); among men, never more than 1%.
+- **The reported trends move with it.** Unfavorable views of the United States peaked at 80% in 2012 and fell to 59% in 2014; among men, 85% and 80%. Men's unfavorable views of the Taliban: 74% in 2009, 75% in 2014. Men's views of al Qaeda did soften.
+- **Interviewers.** Women are interviewed by women (99% in 2010), and women's non-response varies across interviewers far more than chance allows.
+- **Not education, not coverage, not Pew-wide.** The rise occurs within schooling groups; coverage was constant from 2012 to 2014; among 23 countries surveyed in 2009 and 2014, only Pakistan shows a rise confined to women.
 
 The report is [ms/report.pdf](ms/report.pdf).
 
@@ -22,13 +21,13 @@ make paper     # tabs/ -> ms/report.pdf
 make check     # lint, tests, tables current, PDF builds with no undefined references
 ```
 
-To rebuild `results/` from the raw files, create a free account at [pewresearch.org/global/datasets](https://www.pewresearch.org/global/datasets/), download the Spring 2009 and Spring 2014 Global Attitudes datasets, unzip them into `data/raw/2009/` and `data/raw/2014/`, and run `make aggregate`.
+To rebuild `results/` from the raw files, create a free account at [pewresearch.org/global/datasets](https://www.pewresearch.org/global/datasets/), download the Spring 2009 through Spring 2014 Global Attitudes datasets, unzip each into `data/raw/<year>/`, and run `make aggregate`.
 
 ## Layout
 
 ```text
 pakdk/data.py       Read Pew files; harmonize items; code answers as positive, negative, or no answer
-pakdk/analysis.py   Weighted shares, education standardization, cross-country comparison
+pakdk/analysis.py   Weighted shares, same-respondent and interviewer analyses, education standardization, cross-country comparison
 scripts/run.py      aggregate (raw -> results/) and report (results/ -> tabs/)
 tests/              Answer coding, weighting, standardization, and agreement with Pew's published 2014 figures
 results/            Committed summary tables

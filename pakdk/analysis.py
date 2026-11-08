@@ -101,3 +101,61 @@ def other_countries(frames, items, minimum=300):
     out = pd.DataFrame(rows)
     out["change"] = out["2014"] - out["2009"]
     return out
+
+
+BATTERY = ["Taliban", "al Qaeda", "United States", "China", "Iran"]
+
+
+def same_respondents(frames, battery=BATTERY):
+    """Whether the people who skip one question are the people who skip the others, by year and sex."""
+    rows = []
+    for year, frame in frames.items():
+        pakistan = frame[frame["country"] == "Pakistan"]
+        for sex in ["Female", "Male"]:
+            group = pakistan[pakistan["sex"] == sex]
+            skipped = group[battery] == "no answer"
+            weight = group["weight"]
+            taliban, us = skipped["Taliban"], skipped["United States"]
+            count = skipped.sum(axis=1)
+            rows.append(
+                {
+                    "year": year,
+                    "sex": sex,
+                    "skip US if skipped Taliban": weight[taliban & us].sum() / weight[taliban].sum(),
+                    "skip US if answered Taliban": weight[~taliban & us].sum() / weight[~taliban].sum(),
+                    "skip all": weight[count == len(battery)].sum() / weight.sum(),
+                    "skip none": weight[count == 0].sum() / weight.sum(),
+                }
+            )
+    return pd.DataFrame(rows)
+
+
+def interviewer_spread(frames, item="Taliban", minimum=10):
+    """Spread of the no-answer rate across interviewers, against the spread sampling alone would produce."""
+    rows = []
+    for year, frame in frames.items():
+        pakistan = frame[(frame["country"] == "Pakistan") & frame["interviewer"].notna()]
+        if pakistan.empty:
+            continue
+        for sex in ["Female", "Male"]:
+            group = pakistan[pakistan["sex"] == sex].assign(skip=lambda d: (d[item] == "no answer").astype(float))
+            per = group.groupby("interviewer")["skip"].agg(["mean", "size"])
+            per = per[per["size"] >= minimum]
+            overall = group["skip"].mean()
+            chance = (overall * (1 - overall) / per["size"]).mean()
+            same_sex = np.nan
+            if group["interviewer_sex"].notna().any():
+                same_sex = (group["interviewer_sex"] == sex).mean()
+            rows.append(
+                {
+                    "year": year,
+                    "sex": sex,
+                    "interviewers": len(per),
+                    "lowest": per["mean"].min(),
+                    "highest": per["mean"].max(),
+                    "variance": per["mean"].var(),
+                    "chance variance": chance,
+                    "same-sex interviewer": same_sex,
+                }
+            )
+    return pd.DataFrame(rows)
