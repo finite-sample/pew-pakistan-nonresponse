@@ -37,6 +37,8 @@ def pakistan_by_sex(frames):
         for sex in ["All", "Female", "Male"]:
             group = pakistan if sex == "All" else pakistan[pakistan["sex"] == sex]
             for item in ITEMS:
+                if group[item].notna().sum() == 0:
+                    continue
                 row = shares(group, item)
                 for answer in CLASSES:
                     row[answer + " se"] *= np.sqrt(deff)
@@ -84,7 +86,8 @@ def other_countries(frames, items, minimum=300):
     rows = []
     for item in items:
         per_year = {}
-        for year, frame in frames.items():
+        for year in (2009, 2014):
+            frame = frames[year]
             asked = frame[frame[item].notna()]
             per_year[year] = {
                 (country, sex): group

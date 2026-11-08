@@ -23,6 +23,9 @@ class Survey:
 
 SURVEYS = {
     2009: Survey("2009/Pew Gap 2009 Data.sav", "WEIGHT", "Q80", "Q95PAK", 3.0),
+    2013: Survey(
+        "2013/Pew Research Global Attitudes Project Spring 2013 Dataset for web.sav", "WEIGHT", "Q164", "Q180PAK", 4.3
+    ),
     2014: Survey(
         "2014/Pew Research Global Attitudes Spring 2014 Dataset for Web.sav", "weight", "Q132", "Q138PAK", 4.2
     ),
@@ -31,25 +34,29 @@ SURVEYS = {
 # Country labels that differ only in spelling between waves.
 SAME_COUNTRY = {"Palestinian territories": "Palestinian Territories"}
 
-# The same question in both waves. Kind decides which answers count as positive.
+# Each item's variable in each wave that asked it. Kind decides which answers count as positive.
 ITEMS = {
-    "Taliban": ("favorability", "Q23D", "Q46D"),
-    "al Qaeda": ("favorability", "Q23B", "Q46B"),
-    "Hamas": ("favorability", "Q11K", "Q15N"),
-    "Hezbollah": ("favorability", "Q11L", "Q15O"),
-    "United States": ("favorability", "Q11A", "Q15A"),
-    "China": ("favorability", "Q11C", "Q15B"),
-    "Iran": ("favorability", "Q11D", "Q15C"),
-    "Russia": ("favorability", "Q11E", "Q15E"),
-    "European Union": ("favorability", "Q11F", "Q15F"),
-    "Nawaz Sharif": ("favorability", "Q23A", "Q46A"),
-    "Asif Ali Zardari": ("favorability", "Q23C", "Q46C"),
-    "Iftikhar Chaudhry": ("favorability", "Q23E", "Q46E"),
-    "Suicide bombing justified": ("justified", "Q58", "Q100"),
-    "Concern about extremism": ("concern", "Q19", "Q39"),
-    "Taliban a threat": ("threat", "Q60AA", "Q116A"),
-    "al Qaeda a threat": ("threat", "Q60AC", "Q116C"),
-    "India a threat": ("threat", "Q60AB", "Q116B"),
+    "Taliban": ("favorability", {2009: "Q23D", 2013: "Q41D", 2014: "Q46D"}),
+    "al Qaeda": ("favorability", {2009: "Q23B", 2013: "Q41B", 2014: "Q46B"}),
+    "Hamas": ("favorability", {2009: "Q11K", 2013: "Q9J", 2014: "Q15N"}),
+    "Hezbollah": ("favorability", {2009: "Q11L", 2013: "Q9K", 2014: "Q15O"}),
+    "United States": ("favorability", {2009: "Q11A", 2013: "Q9A", 2014: "Q15A"}),
+    "China": ("favorability", {2009: "Q11C", 2013: "Q9C", 2014: "Q15B"}),
+    "Iran": ("favorability", {2009: "Q11D", 2013: "Q9D", 2014: "Q15C"}),
+    "Russia": ("favorability", {2009: "Q11E", 2013: "Q9E", 2014: "Q15E"}),
+    "European Union": ("favorability", {2009: "Q11F", 2013: "Q9F", 2014: "Q15F"}),
+    "Nawaz Sharif": ("favorability", {2009: "Q23A", 2013: "Q41A", 2014: "Q46A"}),
+    "Asif Ali Zardari": ("favorability", {2009: "Q23C", 2013: "Q41C", 2014: "Q46C"}),
+    "Iftikhar Chaudhry": ("favorability", {2009: "Q23E", 2013: "Q41E", 2014: "Q46E"}),
+    "Pakistani Taliban (TTP)": ("favorability", {2013: "Q150A"}),
+    "Afghan Taliban": ("favorability", {2013: "Q150C"}),
+    "Lashkar-e-Taiba": ("favorability", {2013: "Q150B"}),
+    "Haqqani network": ("favorability", {2013: "Q150D"}),
+    "Suicide bombing justified": ("justified", {2009: "Q58", 2013: "Q121", 2014: "Q100"}),
+    "Concern about extremism": ("concern", {2009: "Q19", 2013: "Q35", 2014: "Q39"}),
+    "Taliban a threat": ("threat", {2009: "Q60AA", 2013: "Q142A", 2014: "Q116A"}),
+    "al Qaeda a threat": ("threat", {2009: "Q60AC", 2013: "Q142C", 2014: "Q116C"}),
+    "India a threat": ("threat", {2009: "Q60AB", 2013: "Q142B", 2014: "Q116B"}),
 }
 
 POSITIVE = {
@@ -77,7 +84,7 @@ def classify(label, kind):
 
 
 def education_group(code):
-    """Both waves code 'no formal schooling' as 1; 98 and 99 are don't know and refused."""
+    """Every wave codes 'no formal schooling' as 1; 97 and up are still in school, don't know, refused."""
     if pd.isna(code) or code >= 97:
         return np.nan
     return "none" if code == 1 else "some"
@@ -89,7 +96,6 @@ def load(year, raw=RAW):
     # Some value labels are not valid UTF-8; Latin-1 reads every byte.
     frame, meta = pyreadstat.read_sav(raw / survey.path, encoding="latin1")
     labels = meta.variable_value_labels
-    column = 1 if year == 2009 else 2
     out = pd.DataFrame(
         {
             "year": year,
@@ -99,8 +105,11 @@ def load(year, raw=RAW):
             "education": frame[survey.education].map(education_group),
         }
     )
-    for name, spec in ITEMS.items():
-        kind, variable = spec[0], spec[column]
+    for name, (kind, variables) in ITEMS.items():
+        if year not in variables:
+            out[name] = np.nan
+            continue
+        variable = variables[year]
         coding = {code: classify(text, kind) for code, text in labels[variable].items()}
         out[name] = frame[variable].map(coding)
     return out

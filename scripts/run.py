@@ -11,7 +11,7 @@ from pathlib import Path
 import pandas as pd
 
 from pakdk.analysis import education_standardized, other_countries, pakistan_by_sex
-from pakdk.data import load
+from pakdk.data import SURVEYS, load
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -35,7 +35,7 @@ PLACEBO_ITEMS = ["United States", "China"]
 
 def aggregate():
     warnings.filterwarnings("ignore", category=FutureWarning)
-    frames = {year: load(year) for year in (2009, 2014)}
+    frames = {year: load(year) for year in SURVEYS}
     RESULTS.mkdir(exist_ok=True)
     pakistan_by_sex(frames).to_csv(RESULTS / "pakistan_by_sex.csv", index=False, float_format="%.6f")
     education_standardized(frames, ["Taliban", "al Qaeda", "United States", "China"]).to_csv(
