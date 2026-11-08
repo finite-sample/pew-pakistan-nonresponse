@@ -1,0 +1,14 @@
+# Pew's terms prohibit redistributing their data
+data/raw/
+.venv/
+__pycache__/
+.pytest_cache/
+ms/*.aux
+ms/*.bbl
+ms/*.blg
+ms/*.fdb_latexmk
+ms/*.fls
+ms/*.log
+ms/*.out
+ms/*.xdv
+ms/*.synctex.gz

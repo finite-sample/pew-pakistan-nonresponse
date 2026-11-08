@@ -1,0 +1,120 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{booktabs,adjustbox}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{natbib,xurl}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Who Stopped Answering?},pdfauthor={Gaurav Sood}}
+\usepackage{setspace}
+\setstretch{1.15}
+\usepackage[nameinlink,capitalize,noabbrev]{cleveref}
+\newcommand{\TableStyle}{\normalsize\setlength{\tabcolsep}{6pt}\renewcommand{\arraystretch}{1}}
+\newcommand{\tablenote}[1]{\par\smallskip\begin{minipage}{\linewidth}\footnotesize #1\end{minipage}}
+\input{../tabs/numbers.tex}
+
+\title{Who Stopped Answering? Pakistani Women and Pew's Trends on Extremist Groups, 2009--2014\thanks{\url{https://github.com/finite-sample/pew-pakistan-nonresponse}.}}
+\author{Gaurav Sood\thanks{\href{mailto:gsood07@gmail.com}{\texttt{gsood07@gmail.com}}}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Between Pew's 2009 and 2014 surveys of Pakistan, the share of Pakistanis viewing the Taliban unfavorably fell from \TalibanUnfavOld{}\% to \TalibanUnfav{}\%, while the favorable share barely moved. Pew described extremist groups as ``seen negatively, but less so in recent years,'' and press coverage read the third of respondents without an answer as reluctance to talk about the Taliban. The respondent-level data show something else. Among men, views of the Taliban did not change, and men answered the question as often in 2014 as in 2009. Among women, the share giving no answer rose from \WomenTalibanOld{}\% to \WomenTaliban{}\%, and it rose by similar amounts for the United States, China, and Iran. Women's answers about domestic politicians did not change. The rise is not explained by the larger share of women without schooling in the 2014 sample, and among the \PlaceboCountries{} countries Pew surveyed in both years, only Pakistan shows a rise confined to women. The reported softening toward the Taliban reflects a change in who answered, not a measured change in opinion.
+\end{abstract}
+
+\section{Introduction}
+
+Pew's surveys are the most cited source on how Pakistanis view militant groups. Between 2009 and 2014, the share of respondents with an unfavorable view of the Taliban fell by \TalibanUnfavDrop{} points, while the share with a favorable view stayed near one in ten. The difference went to respondents who gave no answer. This note shows that the rise in no answers came almost entirely from women and was not specific to militant groups. Pakistani women in 2014 were about as likely to decline to rate the United States as to decline to rate the Taliban. Men's no-answer shares moved by a few points at most, apart from two Middle Eastern groups few Pakistanis know, and men's views of the Taliban did not change.
+
+The finding matters for two readings of the 2014 data. Pew reported that extremist groups were viewed less negatively than in earlier years, and that views of the Taliban had not changed substantially. Press coverage treated the third of respondents without an answer as a sign of reluctance to talk about the Taliban. Neither reading separates a change in opinion from a change in who answers.
+
+\section{What Was Reported}
+
+Pew's July 2014 report on extremism states that ``only 8\% have a favorable view of this extremist organization, with a third of Pakistanis not offering an opinion,'' and that ``views of the Taliban have not changed substantially in recent years'' \citep{pew2014extremism}. Its August 2014 report on Pakistan carries a chart titled ``Extremists Seen Negatively, but Less So in Recent Years'' \citep{pew2014pakistan}. Neither report discusses non-response by sex or flags a change in non-response over time. The August report notes one rise in non-response, for Imran Khan: ``Roughly one-in-five (22\%) offer no opinion about Khan, up from 11\% two years ago.''
+
+\textit{Dawn} covered the July report under the headline ``Most Pakistanis fear extremism, dislike Taliban: survey'' \citep{iqbal2014dawn}. It reported that ``almost 60pc of the population in Pakistan sees the Taliban unfavourably. Only 8pc have a favourable view of this extremist organisation,'' and described the remainder as ``a third of Pakistanis'' who ``are reluctant to offer an opinion.''
+
+\section{Data}
+
+I use Pew's respondent-level files for the Spring 2009 and Spring 2014 Global Attitudes surveys \citep{pew2009data, pew2014data}. Both Pakistan samples were interviewed face to face, using multi-stage area probability designs stratified by province and urbanity, with \SampleOld{} respondents in 2009 and \Sample{} in 2014. Both oversampled cities and are weighted to the national urban share. Coverage fell from about 90\% of adults in 2009 to about 82\% in 2014, as more insecure areas of Khyber Pakhtunkhwa and Balochistan were excluded along with the tribal areas, Gilgit-Baltistan, and Azad Kashmir. The 2014 survey was conducted under the direction of Princeton Survey Research Associates International; the 2009 documentation available to me does not name the fieldwork firm.
+
+Each answer is coded as positive (very or somewhat favorable; often or sometimes justified; a very or somewhat serious threat), negative, or no answer (don't know or refused). All shares use Pew's weights. Standard errors use the Kish effective sample size, inflated by the design effect implied by Pew's stated margin of error for Pakistan in each year. The weighted estimates match Pew's published 2014 figures to within a point: \TalibanFav{}\% favorable and \TalibanUnfav{}\% unfavorable toward the Taliban, \QaedaFav{}\% favorable toward al Qaeda, and \SuicideYes{}\% saying suicide bombing is often or sometimes justified.
+
+\section{Women Stopped Answering}
+
+\Cref{tab:no_answer} reports the share giving no answer, by sex, for every item asked in Pakistan in both years. For the Taliban, the share rose from \WomenTalibanOld{}\% to \WomenTaliban{}\% among women and went from \MenTalibanOld{}\% to \MenTaliban{}\% among men. The same pattern holds for countries: women's no-answer share on the United States rose from \WomenUSOld{}\% to \WomenUS{}\%, while men's stayed at \MenUSOld{}--\MenUS{}\%. Questions about domestic politicians are the exception. Almost every woman rated Nawaz Sharif in both years (\WomenNawazOld{}\% and \WomenNawaz{}\% without an answer). The change is a general withdrawal by women from questions about foreign actors and militant groups, not a reluctance specific to the Taliban.
+
+Hamas and Hezbollah are the one place men moved too: their no-answer shares rose among men by about as much as among women. These two groups were already unfamiliar in 2009, when about half of men and three-quarters of women gave no answer about them.
+
+\begin{table}[htbp]
+\centering\TableStyle
+\caption{Share giving no answer, Pakistan, by sex}
+\label{tab:no_answer}
+\begin{adjustbox}{max width=\linewidth}
+\input{../tabs/no_answer_by_sex.tex}
+\end{adjustbox}
+\tablenote{Weighted percentages of respondents answering don't know or refusing. Changes are in percentage points, with standard errors in parentheses that use the design effect implied by Pew's stated margin of error.}
+\end{table}
+
+\section{The Reported Trend Is This Shift}
+
+\Cref{tab:answers} splits the headline Taliban numbers by sex. Men's views did not move: \MenTalibanUnfavOld{}\% unfavorable in 2009 and \MenTalibanUnfav{}\% in 2014. Women's unfavorable share fell from \WomenTalibanUnfavOld{}\% to \WomenTalibanUnfav{}\%, and nearly all of that went to no answer, not to a favorable view. The \TalibanUnfavDrop{}-point fall in unfavorable views of the Taliban in the full sample is women leaving the question unanswered.
+
+Al Qaeda is different. Men's views did soften: their favorable share rose from \MenQaedaFavOld{}\% to \MenQaedaFav{}\% and their unfavorable share fell from \MenQaedaUnfavOld{}\% to \MenQaedaUnfav{}\%. For al Qaeda, Pew's ``less so in recent years'' describes something real among men, on top of the same withdrawal by women.
+
+\begin{table}[htbp]
+\centering\TableStyle
+\caption{Favorable, unfavorable, and no answer, Pakistan, by sex}
+\label{tab:answers}
+\begin{adjustbox}{max width=\linewidth}
+\input{../tabs/answers_by_sex.tex}
+\end{adjustbox}
+\tablenote{Weighted percentages. Rows may not sum to 100 because of rounding.}
+\end{table}
+
+\section{Not a Change in Who Was Sampled}
+
+The 2014 sample contains more women without formal schooling: \WomenNoSchoolingOld{}\% of women in 2009 and \WomenNoSchooling{}\% in 2014. Respondents without schooling give no answer more often, so the shift could account for part of the rise. It accounts for little of it (\cref{tab:education}). Women's no-answer share on the Taliban rose within both groups, from \WomenTalibanNoneOld{}\% to \WomenTalibanNone{}\% among women without schooling and from \WomenTalibanSomeOld{}\% to \WomenTalibanSome{}\% among women with some. Holding 2014 at the 2009 education mix gives \WomenTalibanStandardized{}\%, against \WomenTaliban{}\% observed.
+
+The smaller coverage in 2014 cannot explain a change confined to women either, since excluding insecure districts removes men and women alike.
+
+\begin{table}[htbp]
+\centering\TableStyle
+\caption{No answer by schooling, Pakistan}
+\label{tab:education}
+\begin{adjustbox}{max width=\linewidth}
+\input{../tabs/education.tex}
+\end{adjustbox}
+\tablenote{Weighted percentages giving no answer. ``None'' is no formal education; ``some'' is any schooling. The last column applies 2014 rates within each group to the 2009 education mix. Respondents with missing education are excluded, so the ``All'' columns can differ slightly from \cref{tab:no_answer}.}
+\end{table}
+
+\section{Specific to Pakistan}
+
+If Pew changed how it asked these questions everywhere, women's no-answer shares would rise in other countries too. \Cref{tab:other} reports the change for the two items asked in every country in both years. In most of the \PlaceboCountries{} countries, women's and men's no-answer shares moved by a few points in the same direction. Two other countries show large rises, India and Nigeria, but in both, men's no-answer shares rose too. On the United States, the gap between the rise among women and the rise among men is \PakistanUSGap{} points in Pakistan; the next largest is \NextUSGap{} in \NextUSGapCountry{}.
+
+\begin{table}[htbp]
+\centering\TableStyle
+\caption{Change in no answer, 2009 to 2014, by country and sex}
+\label{tab:other}
+\begin{adjustbox}{max height=0.8\textheight}
+\input{../tabs/other_countries.tex}
+\end{adjustbox}
+\tablenote{Percentage-point changes in the weighted share giving no answer to favorability of the United States and China. Countries surveyed on the item in both years with at least 150 respondents of each sex.}
+\end{table}
+
+\section{What the Data Cannot Say}
+
+The files do not identify interviewers, their sex, or who else was present during the interview, so the cause cannot be pinned down. The candidates are changes in fieldwork that bear on women in particular: interviewer assignment, the presence of male household members, or a change of fieldwork firm. Interviewer characteristics are known to shift answers in surveys in Muslim-majority countries \citep{benstead2014dress}, and women are less likely than men to guess when a don't-know option is available \citep{mondak2004knowledge}, which makes their answers more sensitive to how that option is offered.
+
+With two waves, the timing of the break is also unknown. Pew surveyed Pakistan every year in between, and the intervening waves would show whether the change was gradual or happened at one wave. They would also show which years Pew's chart compares.
+
+\section{Implications}
+
+Reading the Pakistani trends on militant groups requires separating answers from non-answers. In these data, men are a comparable series and women are not. Among men, views of the Taliban were stable between 2009 and 2014 and views of al Qaeda softened. Among women, the data say only that many more declined to answer. Calling that reluctance to talk about the Taliban attributes to the question what belongs to the survey, since the same women equally declined to rate the United States. Pew could report non-response by sex alongside its trend lines; a rise like this one is visible in a single cross-tabulation.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

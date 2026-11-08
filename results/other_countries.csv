@@ -1,0 +1,93 @@
+item,country,sex,2009,2014,change
+United States,Argentina,Female,0.235600,0.252084,0.016484
+United States,Argentina,Male,0.156871,0.153596,-0.003275
+United States,Brazil,Female,0.075330,0.121094,0.045764
+United States,Brazil,Male,0.060985,0.052953,-0.008032
+United States,China,Female,0.088384,0.070490,-0.017895
+United States,China,Male,0.045746,0.054572,0.008826
+United States,Egypt,Female,0.037924,0.032653,-0.005271
+United States,Egypt,Male,0.022044,0.049020,0.026976
+United States,France,Female,0.000000,0.000897,0.000897
+United States,France,Male,0.005626,0.002229,-0.003397
+United States,Germany,Female,0.039609,0.038077,-0.001532
+United States,Germany,Male,0.023027,0.012358,-0.010669
+United States,India,Female,0.119346,0.398312,0.278966
+United States,India,Male,0.039039,0.194446,0.155407
+United States,Indonesia,Female,0.083753,0.106251,0.022498
+United States,Indonesia,Male,0.067609,0.065502,-0.002106
+United States,Israel,Female,0.022568,0.003034,-0.019534
+United States,Israel,Male,0.018045,0.001591,-0.016453
+United States,Japan,Female,0.033338,0.049489,0.016151
+United States,Japan,Male,0.016759,0.007999,-0.008760
+United States,Jordan,Female,0.006135,0.012245,0.006110
+United States,Jordan,Male,0.005871,0.045098,0.039227
+United States,Kenya,Female,0.056604,0.117281,0.060677
+United States,Kenya,Male,0.051429,0.047456,-0.003972
+United States,Lebanon,Female,0.003682,0.017723,0.014041
+United States,Lebanon,Male,0.002402,0.007396,0.004995
+United States,Mexico,Female,0.055282,0.077348,0.022066
+United States,Mexico,Male,0.038233,0.052527,0.014294
+United States,Nigeria,Female,0.017451,0.176451,0.159000
+United States,Nigeria,Male,0.015027,0.114355,0.099328
+United States,Pakistan,Female,0.260720,0.477574,0.216854
+United States,Pakistan,Male,0.071470,0.077340,0.005870
+United States,Palestinian Territories,Female,0.030455,0.073382,0.042927
+United States,Palestinian Territories,Male,0.012300,0.011123,-0.001177
+United States,Poland,Female,0.122451,0.089476,-0.032975
+United States,Poland,Male,0.056531,0.056279,-0.000252
+United States,Russia,Female,0.128266,0.080718,-0.047548
+United States,Russia,Male,0.104848,0.032481,-0.072366
+United States,South Korea,Female,0.047781,0.006279,-0.041502
+United States,South Korea,Male,0.018760,0.014363,-0.004397
+United States,Spain,Female,0.162371,0.079806,-0.082565
+United States,Spain,Male,0.113260,0.044898,-0.068362
+United States,Turkey,Female,0.257360,0.118262,-0.139098
+United States,Turkey,Male,0.067646,0.040686,-0.026961
+United States,United States,Female,0.022400,0.030182,0.007781
+United States,United States,Male,0.021995,0.023012,0.001017
+China,Argentina,Female,0.395643,0.343707,-0.051936
+China,Argentina,Male,0.277936,0.248488,-0.029448
+China,Brazil,Female,0.149050,0.156250,0.007200
+China,Brazil,Male,0.099480,0.089613,-0.009867
+China,China,Female,0.005172,0.007704,0.002532
+China,China,Male,0.003415,0.009753,0.006338
+China,Egypt,Female,0.007984,0.008163,0.000179
+China,Egypt,Male,0.000000,0.011765,0.011765
+China,France,Female,0.000000,0.002058,0.002058
+China,France,Male,0.002882,0.000000,-0.002882
+China,Germany,Female,0.082312,0.085856,0.003544
+China,Germany,Male,0.073313,0.064865,-0.008447
+China,India,Female,0.203080,0.391458,0.188378
+China,India,Male,0.086086,0.216178,0.130092
+China,Indonesia,Female,0.093516,0.099882,0.006367
+China,Indonesia,Male,0.070253,0.073565,0.003312
+China,Israel,Female,0.081475,0.015305,-0.066170
+China,Israel,Male,0.069223,0.012570,-0.056653
+China,Japan,Female,0.071899,0.032084,-0.039815
+China,Japan,Male,0.019961,0.020037,0.000076
+China,Jordan,Female,0.014315,0.014286,-0.000029
+China,Jordan,Male,0.007828,0.031373,0.023545
+China,Kenya,Female,0.159329,0.142322,-0.017007
+China,Kenya,Male,0.112381,0.059092,-0.053289
+China,Lebanon,Female,0.052641,0.040684,-0.011957
+China,Lebanon,Male,0.028897,0.028045,-0.000853
+China,Mexico,Female,0.181252,0.218363,0.037111
+China,Mexico,Male,0.185741,0.150868,-0.034873
+China,Nigeria,Female,0.054695,0.198361,0.143666
+China,Nigeria,Male,0.037114,0.135292,0.098179
+China,Pakistan,Female,0.231258,0.370141,0.138883
+China,Pakistan,Male,0.038778,0.029416,-0.009362
+China,Palestinian Territories,Female,0.109496,0.139991,0.030495
+China,Palestinian Territories,Male,0.049900,0.049773,-0.000127
+China,Poland,Female,0.220196,0.177819,-0.042377
+China,Poland,Male,0.108430,0.138583,0.030153
+China,Russia,Female,0.138491,0.100673,-0.037818
+China,Russia,Male,0.105063,0.058987,-0.046076
+China,South Korea,Female,0.061653,0.022742,-0.038912
+China,South Korea,Male,0.037668,0.015035,-0.022634
+China,Spain,Female,0.193299,0.091271,-0.102028
+China,Spain,Male,0.179558,0.038107,-0.141451
+China,Turkey,Female,0.374312,0.153430,-0.220883
+China,Turkey,Male,0.171214,0.057285,-0.113929
+China,United States,Female,0.150723,0.108068,-0.042655
+China,United States,Male,0.104543,0.094146,-0.010396

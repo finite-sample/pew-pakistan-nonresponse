@@ -1,0 +1,20 @@
+[project]
+name = "pakdk"
+version = "0.1.0"
+description = "Who stopped answering: nonresponse among Pakistani women in Pew's 2009 and 2014 Global Attitudes surveys"
+requires-python = ">=3.12"
+dependencies = ["numpy", "pandas", "pyreadstat"]
+
+[dependency-groups]
+dev = ["pytest", "black", "isort", "flake8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
