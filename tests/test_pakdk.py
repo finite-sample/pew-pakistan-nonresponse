@@ -2,10 +2,11 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import pyreadstat
 import pytest
 
 from pakdk.analysis import design_effect, education_standardized, shares
-from pakdk.data import classify, education_group
+from pakdk.data import ITEMS, SURVEYS, classify, education_group, load
 
 RESULTS = Path(__file__).resolve().parent.parent / "results"
 
@@ -74,3 +75,31 @@ def test_results_reproduce_pew_published_2014_figures():
     assert round(100 * row.loc["Suicide bombing justified", "positive"]) == 3
     shares_sum = table[["positive", "negative", "no answer"]].sum(axis=1)
     assert np.allclose(shares_sum, 1)
+
+
+@pytest.mark.parametrize("year", [2010, 2014])
+def test_load_reads_wave_columns_and_preserves_labels(tmp_path, year):
+    survey = SURVEYS[year]
+    columns = {"COUNTRY": [1, 1], survey.weight: [0.4, 1.6], survey.sex: [1, 2], survey.education: [1, 2]}
+    labels = {"COUNTRY": {1: "Pakistan"}, survey.sex: {1: "Female", 2: "Male"}}
+    for _, variables in ITEMS.values():
+        if year in variables:
+            columns[variables[year]] = [1, 2]
+            labels[variables[year]] = {1: "Very favorable", 2: "Refused"}
+    if survey.interviewer:
+        columns[survey.interviewer] = [12, 16]
+    if survey.interviewer_sex:
+        columns[survey.interviewer_sex] = [1, 2]
+        labels[survey.interviewer_sex] = labels[survey.sex]
+    path = tmp_path / survey.path
+    path.parent.mkdir()
+    pyreadstat.write_sav(pd.DataFrame(columns).assign(unused=711), path, variable_value_labels=labels)
+    frame = load(year, tmp_path)
+    assert frame["Taliban"].tolist() == ["positive", "no answer"]
+    assert frame["weight"].tolist() == [0.4, 1.6]
+    assert frame["sex"].tolist() == ["Female", "Male"]
+    assert frame["ISIS"].isna().all()
+    if survey.interviewer_sex:
+        assert frame["interviewer_sex"].tolist() == ["Female", "Male"]
+    else:
+        assert frame["interviewer_sex"].isna().all()

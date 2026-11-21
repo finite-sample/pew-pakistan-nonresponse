@@ -158,8 +158,11 @@ def education_group(code):
 def load(year, raw=RAW):
     """One row per respondent, all countries, with harmonized items coded by answer class."""
     survey = SURVEYS[year]
+    columns = ["COUNTRY", survey.weight, survey.sex, survey.education]
+    columns.extend(v for v in (survey.interviewer, survey.interviewer_sex) if v)
+    columns.extend(variables[year] for _, variables in ITEMS.values() if year in variables)
     # Some value labels are not valid UTF-8; Latin-1 reads every byte.
-    frame, meta = pyreadstat.read_sav(raw / survey.path, encoding="latin1")
+    frame, meta = pyreadstat.read_sav(raw / survey.path, encoding="latin1", usecols=columns)
     labels = meta.variable_value_labels
     out = pd.DataFrame(
         {
